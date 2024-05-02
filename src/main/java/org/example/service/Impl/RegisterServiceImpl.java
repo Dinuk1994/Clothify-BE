@@ -37,8 +37,8 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public Boolean isExists(String email, String password) {
-       return registerRepository.existsByEmailAndPassword(email,password);
+    public Boolean isExists(String email) {
+       return registerRepository.existsByEmail(email);
     }
 
     @Override

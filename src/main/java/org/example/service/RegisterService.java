@@ -13,7 +13,7 @@ public interface RegisterService {
 
     Boolean deleteById(Long id);
 
-    Boolean isExists(String email, String password);
+    Boolean isExists(String email);
 
     Boolean existsByUserName(String userName);
 }

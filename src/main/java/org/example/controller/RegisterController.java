@@ -24,7 +24,7 @@ public class RegisterController {
 
     @PostMapping("/add")
     public ResponseEntity<?> addUser(@RequestBody Register register) {
-        if (registerService.isExists(register.getEmail(), register.getPassword())) {
+        if (registerService.isExists(register.getEmail())){
             return ResponseEntity.badRequest().body("Can't register user already exists");
         }else {
             loginService.addUser(new Login(register.getId(), register.getEmail(), register.getPassword()));
@@ -47,7 +47,7 @@ public class RegisterController {
 
     @PostMapping("/isExists")
     public ResponseEntity<?> isExists(@RequestBody String email,String password ){
-        registerService.isExists(email,password);
+        registerService.isExists(email);
         return ResponseEntity.ok("Can't register user already registered");
     }
 

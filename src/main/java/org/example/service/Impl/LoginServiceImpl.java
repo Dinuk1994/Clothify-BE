@@ -6,6 +6,7 @@ import org.example.entity.LoginEntity;
 import org.example.repository.LoginRepository;
 import org.example.service.LoginService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,6 +19,9 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public void addUser(Login login) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encrptPassword = passwordEncoder.encode(login.getPassword());
+        login.setPassword(encrptPassword);
         loginRepository.save(modelMapper.map(login, LoginEntity.class));
     }
 }

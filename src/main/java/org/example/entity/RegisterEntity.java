@@ -21,5 +21,5 @@ public class RegisterEntity {
         private String userName;
         private String email;
         private String password;
-        private String repeatPassword;
+
 }
